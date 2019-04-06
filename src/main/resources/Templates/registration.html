@@ -1,10 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
     <meta charset="UTF-8">
     <title>Sign up</title>
 </head>
 <body>
+    <div>
+        <form th:action="@{/registration}" method="post">
+            <label for="firstName">First name</label>
+            <input type="text" class="form-control" id="firstName" placeholder="First Name" name="name">
+            <label for="surname">Surname</label>
+            <input type="text" class="form-control" id="surname" placeholder="Surname" name="surname">
+            <label for="lastName">Last name</label>
+            <input type="text" class="form-control" id="lastName" placeholder="Last name" name="lastName">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" placeholder="Email" name="email" required>
+            <label for="username">Username</label>
+            <input type="text" class="form-control" id="username" placeholder="Username" name="username" required>
+            <p th:if="${message}" class="text-danger">Username is already taken</p>
+            <label for="pass">Password</label>
+            <input type="password" class="form-control" id="pass" placeholder="Password" name="password" required>
+            <label for="confirmPass">Confirm password</label>
+            <input type="password" class="form-control" id="confirmPass" placeholder="Confirm password"
+                   name="confirmPassword">
+        </form>
+    </div>
+
+    <script>
+        $().ready(function(){
+            $("#registration").validate({
+                rules: {
+                    password: {
+                        required: true
+                    },
+                    confirmPass: {
+                        required: true,
+                        equalTo: "#password"
+                    }
+                },
+                messages: {
+                    password: "Please enter password",
+                    confirmPass: "Please enter valid confirm password"
+                },
+                submitHandler: function() { $('#registration').submit(); }
+            });
+        });
+    </script>
 
 </body>
 </html>
