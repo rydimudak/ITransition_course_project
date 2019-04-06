@@ -12,7 +12,7 @@
 .idea/**/usage.statistics.xml
 .idea/**/dictionaries
 .idea/**/shelf
-.target/**
+.target/*
 
 # Generated files
 .idea/**/contentModel.xml
@@ -121,3 +121,5 @@ target/classes/com/example/tshirtshop/Entities/User.class
 target/classes/Templates/login.html
 target/classes/Templates/main.html
 target/classes/Templates/registration.html
+target/classes/com/example/tshirtshop/Controllers/RegistrationController.class
+target/classes/com/example/tshirtshop/Repos/UserRepository.class
