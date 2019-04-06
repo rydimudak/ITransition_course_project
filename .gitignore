@@ -12,6 +12,7 @@
 .idea/**/usage.statistics.xml
 .idea/**/dictionaries
 .idea/**/shelf
+.target/**
 
 # Generated files
 .idea/**/contentModel.xml
@@ -110,3 +111,13 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.gitignore.io/api/windows,intellij
+target/classes/application.properties
+target/classes/com/example/tshirtshop/Application.class
+target/classes/com/example/tshirtshop/Configs/MvcConfig.class
+target/classes/com/example/tshirtshop/Configs/WebSecurityConfig.class
+target/classes/com/example/tshirtshop/Controllers/MainController.class
+target/classes/com/example/tshirtshop/Entities/Role.class
+target/classes/com/example/tshirtshop/Entities/User.class
+target/classes/Templates/login.html
+target/classes/Templates/main.html
+target/classes/Templates/registration.html
