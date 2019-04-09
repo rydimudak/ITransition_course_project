@@ -13,6 +13,6 @@ public class EqualUsernamesRegistrationConstraint implements RegistrationConstra
 
     @Override
     public boolean registrationAllowed(User user) {
-        return (userRepository.findByUsername(user.getUsername()) != null);
+        return (userRepository.findByUsername(user.getUsername()) == null);
     }
 }
