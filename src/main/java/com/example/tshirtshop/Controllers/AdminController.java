@@ -22,19 +22,19 @@ public class AdminController {
 
     @GetMapping("/admin")
     public String admin(Model model) {
-        Iterable<UserEntity> users = userRepository.findAllByRoles("USER");
+        Iterable<UserEntity> users = userRepository.findAll();
         model.addAttribute("users", users);
         return "admin";
     }
 
     @PostMapping("deleting")
-    public String admin(@RequestParam("userId") Iterable<UserEntity> users, Model model) {
+    public String admin(@RequestParam("userId") UserEntity[] users, Model model) {
 
         for (UserEntity user: users) {
             userRepository.delete(user);
         }
 
-        Iterable<UserEntity> _users = userRepository.findAllByRoles("USER");
+        Iterable<UserEntity> _users = userRepository.findAll();
         model.addAttribute("users", _users);
 
         return "admin";
