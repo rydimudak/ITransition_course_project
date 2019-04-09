@@ -7,11 +7,11 @@ import javax.validation.constraints.NotEmpty;
 
 public class User {
 
-    //@NotEmpty
+    @NotEmpty
     private String username;
 
-    //@NotEmpty
-    //@Min(6)
+    @NotEmpty
+    @Min(6)
     private String password;
     private String confirmPassword;
 
@@ -19,7 +19,7 @@ public class User {
     private String surname;
     private String lastName;
 
-    //@Email
+    @Email
     private String email;
 
     public String getUsername() {return username;}

@@ -1,12 +1,14 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Sign up</title>
 </head>
 <body>
     <div>
+
+        <span th:text="${error}" style="color: red"></span>
+
         <form th:action="@{/registration}" method="post">
             <label for="firstName">First name</label>
             <input type="text" class="form-control" id="firstName" placeholder="First Name" name="name">

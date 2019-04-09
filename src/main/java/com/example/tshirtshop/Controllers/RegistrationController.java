@@ -1,12 +1,12 @@
 package com.example.tshirtshop.Controllers;
 
-import com.example.tshirtshop.Entities.UserEntity;
+import com.example.tshirtshop.Exceptions.RegistrationFailedException;
 import com.example.tshirtshop.Models.User;
-import com.example.tshirtshop.Repos.UserRepository;
 import com.example.tshirtshop.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,9 +18,6 @@ import javax.validation.Valid;
 @RequestMapping(path = "/registration")
 public class RegistrationController {
     @Autowired
-    private UserRepository userRepository;
-
-    @Autowired
     private UserService userService;
 
     @GetMapping
@@ -29,16 +26,16 @@ public class RegistrationController {
     }
 
     @PostMapping
-    public String addUser(@ModelAttribute @Valid User user, Model model) {
+    public String addUser(@ModelAttribute @Valid User user, BindingResult result, Model model) throws RegistrationFailedException{
 
-        UserEntity userFromDb = userRepository.findByUsername(user.getUsername());
-        if (userFromDb != null) {
-            model.addAttribute("message", true);
+        if (result.hasErrors()) {
+            model.addAttribute("error", "Some of the fields have invalid values");
             return "/registration";
         }
-
-        userService.registerNewMember(user);
-
-        return "redirect:/login";
+        else {
+            userService.registerNewMember(user);
+            return "redirect:/login";
+        }
     }
+
 }
