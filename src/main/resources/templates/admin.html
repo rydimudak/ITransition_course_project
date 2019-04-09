@@ -1,10 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Admin-panel</title>
 </head>
 <body>
-    Hi!
+
+    <form th:action="@{/deleting}" method="post">
+        <input type="submit" name="action" value="Delete selected users">
+        <table>
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Username</th>
+                <th>First name</th>
+                <th>Surname</th>
+                <th>Last name</th>
+                <th>Status</th>
+            </tr>
+            </thead>
+            <tbody th:each="user : ${users}">
+            <tr>
+                <th scope="row"> <label th:value="${user.getId()}"><input type="checkbox" th:value="${user.getId()}" name="userId"></label></th>
+                <td><label th:text="${user.getUsername()}"></label></td>
+                <td><label th:text="${user.getName()}"></label></td>
+                <td><label th:text="${user.getSurname()}" ></label></td>
+                <td><label th:text="${user.getLastName()}"></label></td>
+                <td><label th:text="${user.getEmail()}"></label></td>
+                <td th:if="${user.isActive()}"><label>Active</label></td>
+                <td th:unless="${user.isActive()}"><label>Blocked</label></td>
+            </tr>
+            </tbody>
+        </table>
+    </form>
+
 </body>
 </html>

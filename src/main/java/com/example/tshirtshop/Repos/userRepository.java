@@ -1,8 +1,10 @@
 package com.example.tshirtshop.Repos;
 
 import com.example.tshirtshop.Entities.UserEntity;
-import org.springframework.data.repository.CrudRepository;
+import com.example.tshirtshop.Models.User;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface UserRepository extends CrudRepository<UserEntity, Integer> {
+public interface UserRepository extends JpaRepository<UserEntity, Integer> {
     UserEntity findByUsername(String username);
+    Iterable<UserEntity> findAllByRoles(String role);
 }

@@ -27,4 +27,9 @@ public class UserService {
         }
     }
 
+    public void deleteMember(User user) {
+        UserEntity entity = new UserEntity(user.getUsername(), user.getPassword(), user.getName(), user.getSurname(), user.getLastName(), user.getEmail());
+        userRepository.delete(entity);
+    }
+
 }
