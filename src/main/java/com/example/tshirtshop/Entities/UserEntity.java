@@ -1,22 +1,31 @@
 package com.example.tshirtshop.Entities;
 
+import com.example.tshirtshop.Models.Role;
+
 import javax.persistence.*;
 import java.util.Set;
 
 @Entity
 @Table(name = "usr")
-public class User {
+public class UserEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
+    @Column
     private String username;
+    @Column
     private String password;
+    @Column
     private String name;
+    @Column
     private String surname;
+    @Column
     private String lastName;
+    @Column
     private String email;
+
     transient private String confirmPassword;
 
     @ElementCollection(targetClass = Role.class, fetch = FetchType.LAZY)
@@ -26,9 +35,20 @@ public class User {
 
     private boolean active = false;
 
+    public UserEntity() {}
+
+    public UserEntity(String username, String password, String name, String surname, String lastName, String email) {
+        this.username = username;
+        this.password = password;
+        this.name = name;
+        this.surname = surname;
+        this.lastName = lastName;
+        this.email = email;
+    }
+
     public Integer getId() {return id;}
 
-    public void setId(Integer id) {this.id = id;}
+    //public void setId(Integer id) {this.id = id;}
 
     public String getUsername() {return username;}
 
