@@ -8,6 +8,8 @@ import com.example.tshirtshop.Repos.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
+
 @Service
 public class UserService {
 
@@ -21,7 +23,10 @@ public class UserService {
 
         if (registrationConstraint.registrationAllowed(user)) {
             UserEntity entity = new UserEntity(user.getUsername(), user.getPassword(), user.getName(), user.getSurname(), user.getLastName(), user.getEmail());
-            entity.setRole(Role.USER);
+            entity.setRoles(Collections.singleton(Role.USER));
+            //TODO: REWORK SUBMISSION
+                entity.setActive(true);
+            //
             userRepository.save(entity);
         }
         else {

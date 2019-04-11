@@ -1,11 +1,9 @@
 package com.example.tshirtshop.Controllers;
 
 import com.example.tshirtshop.Entities.UserEntity;
-import com.example.tshirtshop.Models.User;
 import com.example.tshirtshop.Repos.UserRepository;
 import com.example.tshirtshop.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;

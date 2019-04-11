@@ -28,10 +28,10 @@ public class UserEntity {
 
     transient private String confirmPassword;
 
-    @ElementCollection(targetClass = Role.class, fetch = FetchType.LAZY)
+    @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
     @Enumerated(EnumType.STRING)
-    private Role role;
+    private Set<Role> roles;
 
     private boolean active = false;
 
@@ -49,6 +49,10 @@ public class UserEntity {
     public Integer getId() {return id;}
 
     //public void setId(Integer id) {this.id = id;}
+
+    public Set<Role> getRoles() {return roles;}
+
+    public void setRoles(Set<Role> roles) {this.roles = roles;}
 
     public String getUsername() {return username;}
 
@@ -77,10 +81,6 @@ public class UserEntity {
     public String getConfirmPassword() {return confirmPassword;}
 
     public void setConfirmPassword(String confirmPassword) {this.confirmPassword = confirmPassword;}
-
-    public Role getRole() {return role;}
-
-    public void setRole(Role role) {this.role = role;}
 
     public boolean isActive() {return active;}
 
