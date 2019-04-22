@@ -26,7 +26,7 @@ public class UserEntity {
     @Column
     private String email;
     @Column
-    private String activationCode;}
+    private String activationCode;
 
     transient private String confirmPassword;
 
@@ -87,9 +87,9 @@ public class UserEntity {
     public boolean isActive() {return active;}
 
     public void setActive(boolean active) {this.active = active;}
-    
+
     public String getActivationCode() {return activationCode;}
 
-    public void setActivationCode(String activationCode) {this.activationCode = activationCode;
+    public void setActivationCode(String activationCode) {this.activationCode = activationCode;}
 
 }
